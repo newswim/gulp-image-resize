@@ -7,6 +7,20 @@ var sequence = require("run-sequence");
 
 var imageResize = require("./index.js");
 
+// Custom task for Diem Digital stock images
+gulp.task('resize', function () {
+  gulp.src('_originals/*')
+    .pipe(imageResize({
+      width : 840,
+      height : 560,
+      quality: 1,
+      crop : true,
+      filter: "Catrom",
+      gravity: "Center",
+      upscale : false
+    }))
+    .pipe(gulp.dest('dist'));
+});
 
 
 gulp.task("jshint", function () {
